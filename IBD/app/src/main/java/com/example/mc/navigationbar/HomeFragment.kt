@@ -16,12 +16,11 @@ import com.example.mc.viewmodel.WeatherViewModel
 import com.example.mc.viewmodelfactory.WeatherViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 
 class HomeFragment : Fragment() {
-    lateinit var weatherViewModel: WeatherViewModel
-
-    private var lat: Double = 0.0
-    private var long: Double = 0.0
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -36,6 +35,7 @@ class HomeFragment : Fragment() {
                 }
             })
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+
     }
 
     override fun onCreateView(
@@ -46,22 +46,24 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        return view
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         fusedLocationClient.lastLocation
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val location = task.result
-                    lat = location.latitude
-                    long = location.longitude
-                    Log.d("TAG", lat.toString() + "long" + long.toString())
+                    val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
+                    mapFragment.getMapAsync { googleMap ->
+                        val latLng = LatLng(location.latitude, location.longitude)
+                        val zoom = 15f
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
+                    }
                 }
             }
-
-        return view
     }
 
-    private fun kelvinToCelsius(kelvin: Double): String {
-        return String.format("%.1f", (kelvin - 272.15)) + "\u00B0C"
-    }
 }
