@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
     id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -97,4 +98,8 @@ dependencies {
 
     //Databiding
     implementation 'com.android.databinding:library:7.4.0'
+
+    // Google Maps Services
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
 }
