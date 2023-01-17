@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">EventReport</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign in</string>
+    <string name="hello">Hello! \nRegister to \nget started</string>
+    <string name="family_name">Family Name</string>
+    <string name="given_name">Given Name</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="hello_welcome_back">Hello! \nWelcome back</string>
+    <string name="title_activity_container">ContainerActivity</string>
+    <string name="title_home">Home</string>
+    <string name="report">Report</string>
+    <string name="profile">Profile</string>
+    <string name="sign_out">Sign out</string>
+    <string name="please_insert_the_details">Please insert the details</string>
+    <string name="description">Description</string>
+    <string name="the_weather">The weather at your \ncurrent location</string>
+    <string name="weather">Weather:</string>
+    <string name="description_weather">Description:</string>
+    <string name="max_temp_n">Max Temp:\n</string>
+    <string name="min_temp_n">Min Temp:\n</string>
+    <string name="temp_now_n">Temp Now:\n</string>
+    <string name="temp_felt_n">Temp Felt:\n</string>
+    <string name="pressure_n">Pressure:\n</string>
+    <string name="wind_speed_n">Wind speed:\n</string>
+    <string name="humidity">Humidity:\n</string>
+    <string name="weatherDescription">weatherDescription</string>
+    <string name="family_name_i">Family name:</string>
+    <string name="given_name_i">Given name:</string>
+    <string name="e_mail_i">E-mail:</string>
+    <string name="events_you_have_reported">Events you have reported:</string>
+    <string name="no_events">There are no events to show</string>
+    <string-array name="events">
+        <item>Earthquake</item>
+        <item>Flood</item>
+        <item>Fire</item>
+        <item>Storm</item>
+        <item>Landslides</item>
+        <item>Snowstorm</item>
+        <item>Fog</item>
+    </string-array>
+</resources>
