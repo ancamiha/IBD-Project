@@ -54,19 +54,19 @@
                 app:layout_constraintStart_toEndOf="@+id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@+id/title" />
 
-            <Spinner
-                android:id="@+id/spinner_events"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/round_text_box_dark"
-                android:elevation="5dp"
-                android:padding="13dip"
-                android:spinnerMode="dropdown"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-                app:layout_constraintStart_toEndOf="@+id/guidelineLeft"
-                app:layout_constraintTop_toBottomOf="@+id/description" />
+<!--            <Spinner-->
+<!--                android:id="@+id/spinner_events"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/round_text_box_dark"-->
+<!--                android:elevation="5dp"-->
+<!--                android:padding="13dip"-->
+<!--                android:spinnerMode="dropdown"-->
+<!--                android:textSize="20sp"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/guidelineRight"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/guidelineLeft"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/description" />-->
 
             <TextView
                 android:id="@+id/addressInfo"
@@ -79,7 +79,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelineLeft"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_events" />
+                app:layout_constraintTop_toBottomOf="@+id/description" />
 
             <TextView
                 android:id="@+id/addressTv"
@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.10" />
+                app:layout_constraintGuide_percent="0.30" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

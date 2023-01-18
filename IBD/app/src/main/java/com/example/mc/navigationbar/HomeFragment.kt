@@ -5,15 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.mc.R
-import com.example.mc.model.OpenWeatherResponse
-import com.example.mc.repository.WeatherRepository
-import com.example.mc.viewmodel.WeatherViewModel
-import com.example.mc.viewmodelfactory.WeatherViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -70,9 +64,9 @@ class HomeFragment : Fragment() {
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
 
                         val markers = listOf(
-                            LatLng(lat+0.1, long+0.1),
-                            LatLng(lat-0.1, long-0.1),
-                            LatLng(lat+0.2, long-0.2)
+                            LatLng(lat+0.005, long+0.005),
+                            LatLng(lat-0.005, long-0.005),
+                            LatLng(lat+0.01, long-0.01)
                         )
 
                         for (marker in markers) {
