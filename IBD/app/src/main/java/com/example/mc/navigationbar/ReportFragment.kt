@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -153,12 +154,13 @@ class ReportFragment : Fragment() {
 
         val markers = Markers(listOf(Marker(email, lat, long, s, current)))
 
+        Log.d("Markers_list", markers.toString())
         eventViewModel.addMarker(markers)
         eventViewModel.addMarkerResponse.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful) {
-                Log.d("Response", "Success $response")
+                Log.d("Successful", "Success $response")
             } else {
-                Log.d("Response", response.toString())
+                Log.d("Not successful", response.toString())
             }
         }
     }

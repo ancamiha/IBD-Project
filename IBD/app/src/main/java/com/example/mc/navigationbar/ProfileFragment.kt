@@ -84,7 +84,6 @@ class ProfileFragment : Fragment() {
                 }
             })
 
-
         recyclerView.adapter = eventListAdapter
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(ProfileFragmentViewModel::class.java)
