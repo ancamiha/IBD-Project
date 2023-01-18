@@ -14,8 +14,10 @@ import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onStart() {
-        super.onStart()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
         val user : FirebaseUser? = Firebase.auth.currentUser
         user?.let {
             val intent = Intent(baseContext, ContainerActivity::class.java)
@@ -24,11 +26,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         val registerBtn: Button = findViewById(R.id.registerBtn)
         val singInBtn: Button = findViewById(R.id.singInBtn)
