@@ -9,7 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -18,6 +21,7 @@ import com.example.mc.R
 import com.example.mc.database.EventDatabase
 import com.example.mc.databinding.FragmentReportBinding
 import com.example.mc.model.Marker
+import com.example.mc.model.Markers
 import com.example.mc.repository.EventRepository
 import com.example.mc.viewmodel.EventViewModel
 import com.example.mc.viewmodel.ReportFragmentViewModel
@@ -35,7 +39,6 @@ import com.google.firebase.ktx.Firebase
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
 class ReportFragment : Fragment() {
 
@@ -104,9 +107,6 @@ class ReportFragment : Fragment() {
                 }
             })
 
-
-
-
         reportBtn.isAllCaps = false
 
         fusedLocationClient.lastLocation
@@ -126,17 +126,13 @@ class ReportFragment : Fragment() {
             )[ReportFragmentViewModel::class.java]
 
         reportBtn.setOnClickListener {
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-            val current = LocalDateTime.now().format(formatter)
-            Toast.makeText(
-                context, current, Toast.LENGTH_SHORT
-            ).show()
-            Log.d(
-                "TAG", "email " + email +
-                        " lat " + lat.toString() + " long " + long.toString()
-                        + " name " + familyName + " " + givenName + " time " + current
-            )
-            addMarker(email, lat, long, "$familyName $givenName", current)
+            val current = LocalDateTime.now()
+            val dateIso = current.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"))
+
+            Toast.makeText(context, "Event reported successfully", Toast.LENGTH_SHORT).show()
+
+            addMarker(email, lat, long, "$familyName $givenName", dateIso)
+
             // hide keyboard after submit
             val imm = context!!.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view?.windowToken, 0)
@@ -150,11 +146,13 @@ class ReportFragment : Fragment() {
         return binding.root
     }
 
-    private fun addMarker(email: String, lat: Double, long: Double, s: String, current: String?) {
+    private fun addMarker(email: String, lat: Double, long: Double, s: String, current: String) {
         val eventRepository = EventRepository()
         val eventViewModelFactory = EventViewModelFactory(eventRepository)
         eventViewModel = ViewModelProvider(this, eventViewModelFactory)[EventViewModel::class.java]
-        var markers: List<Marker> = listOf<Marker>(Marker(email, lat, long, s, current!!))
+
+        val markers = Markers(listOf(Marker(email, lat, long, s, current)))
+
         eventViewModel.addMarker(markers)
         eventViewModel.addMarkerResponse.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful) {
@@ -162,7 +160,6 @@ class ReportFragment : Fragment() {
             } else {
                 Log.d("Response", response.toString())
             }
-
         }
     }
 
@@ -174,5 +171,4 @@ class ReportFragment : Fragment() {
         val addressText = address.getAddressLine(0)
         addressTv.text = addressText
     }
-
 }
