@@ -12,8 +12,8 @@ class ReportFragmentViewModel (
     application: Application
 ) : AndroidViewModel(application){
 
-    fun insertEvent(loc: String, data: String, tag: String, desc: String) {
-        val event: Event = Event(location = loc, data = data, tag = tag, description = desc)
+    fun insertEvent(loc: String, data: String, desc: String) {
+        val event: Event = Event(location = loc, data = data, description = desc)
         viewModelScope.launch {
             database.insert(event)
         }

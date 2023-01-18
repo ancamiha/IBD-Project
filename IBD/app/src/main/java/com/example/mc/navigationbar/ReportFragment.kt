@@ -127,6 +127,12 @@ class ReportFragment : Fragment() {
             )[ReportFragmentViewModel::class.java]
 
         reportBtn.setOnClickListener {
+            reportViewModel.insertEvent(
+                addressTv.text.toString(),
+                LocalDate.now().toString(),
+                descriptionEt.text.toString()
+            )
+
             val current = LocalDateTime.now()
             val dateIso = current.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"))
 

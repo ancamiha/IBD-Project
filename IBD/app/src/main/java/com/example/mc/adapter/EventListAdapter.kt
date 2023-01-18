@@ -23,7 +23,6 @@ class EventListAdapter: RecyclerView.Adapter<EventListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.location?.text = events[position].location
         holder.date?.text = events[position].data
-        holder.tag?.text = events[position].tag
     }
 
     override fun getItemCount() = events.size
@@ -31,6 +30,5 @@ class EventListAdapter: RecyclerView.Adapter<EventListAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val location = itemView.findViewById<TextView>(R.id.locationAddress)
         val date = itemView.findViewById<TextView>(R.id.date)
-        val tag = itemView.findViewById<TextView>(R.id.tag)
     }
 }
