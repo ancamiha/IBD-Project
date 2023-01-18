@@ -9,7 +9,7 @@ import retrofit2.http.POST
 
 interface APIHelper {
     @POST("/add_markers")
-    suspend fun addMarker(@Body markers: Markers): Response<String>
+    suspend fun addMarker(@Body markers: Markers): Response<Void>
 
     @GET("/get_markers")
     suspend fun getMarkers(): Response<Members>

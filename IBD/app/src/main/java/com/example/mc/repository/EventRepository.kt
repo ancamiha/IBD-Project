@@ -6,7 +6,7 @@ import com.example.mc.retrofit.RetrofitHelper
 import retrofit2.Response
 
 class EventRepository {
-    suspend fun addMarker(markers: Markers): Response<String> {
+    suspend fun addMarker(markers: Markers): Response<Void> {
         return RetrofitHelper.api.addMarker(markers)
     }
 

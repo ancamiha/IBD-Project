@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class EventViewModel(private val eventRepository: EventRepository) : ViewModel() {
-    val addMarkerResponse: MutableLiveData<Response<String>> = MutableLiveData()
+    val addMarkerResponse: MutableLiveData<Response<Void>> = MutableLiveData()
     val getMarkersResponse: MutableLiveData<Response<Members>> = MutableLiveData()
 
     fun addMarker(markers: Markers) {
