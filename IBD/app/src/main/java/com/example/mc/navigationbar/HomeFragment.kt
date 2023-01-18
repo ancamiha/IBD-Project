@@ -19,8 +19,12 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 class HomeFragment : Fragment() {
+
+    private var lat: Double = 0.0
+    private var long: Double = 0.0
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -56,14 +60,29 @@ class HomeFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val location = task.result
+                    lat = location.latitude
+                    long = location.longitude
+                    Log.d("TAG", lat.toString() + "long" + long.toString())
                     val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
                     mapFragment.getMapAsync { googleMap ->
-                        val latLng = LatLng(location.latitude, location.longitude)
+                        val latLng = LatLng(lat, long)
                         val zoom = 15f
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
+
+                        val markers = listOf(
+                            LatLng(lat+0.1, long+0.1),
+                            LatLng(lat-0.1, long-0.1),
+                            LatLng(lat+0.2, long-0.2)
+                        )
+
+                        for (marker in markers) {
+                            googleMap.addMarker(MarkerOptions().position(marker).title("Type").snippet("Description"))
+                        }
                     }
                 }
             }
+
+
     }
 
 }
