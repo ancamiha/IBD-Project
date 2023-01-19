@@ -49,7 +49,6 @@ class ReportFragment : Fragment() {
     private var lat: Double = 0.0
     private var long: Double = 0.0
 
-    lateinit var descriptionEt: EditText
     lateinit var reportBtn: Button
     lateinit var addressTv: TextView
 
@@ -90,7 +89,6 @@ class ReportFragment : Fragment() {
         val dataSource = EventDatabase.getInstance(application).eventDatabaseDao
         val viewModelFactory = ReportFragmentViewModelFactory(dataSource, application)
 
-        descriptionEt = binding.root.findViewById(R.id.description)
         reportBtn = binding.root.findViewById(R.id.reportBtn)
         addressTv = binding.root.findViewById(R.id.addressTv)
 
@@ -127,24 +125,18 @@ class ReportFragment : Fragment() {
             )[ReportFragmentViewModel::class.java]
 
         reportBtn.setOnClickListener {
+            val current = LocalDateTime.now()
+            val roomDate = current.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+
             reportViewModel.insertEvent(
                 addressTv.text.toString(),
-                LocalDate.now().toString(),
-                descriptionEt.text.toString()
+                roomDate.toString()
             )
-
-            val current = LocalDateTime.now()
             val dateIso = current.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"))
 
             Toast.makeText(context, "Event reported successfully", Toast.LENGTH_SHORT).show()
 
             addMarker(email, lat, long, "$familyName $givenName", dateIso)
-
-            // hide keyboard after submit
-            val imm = context!!.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view?.windowToken, 0)
-
-            descriptionEt.text.clear()
         }
 
         binding.lifecycleOwner = this

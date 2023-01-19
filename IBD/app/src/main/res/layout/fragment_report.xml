@@ -23,70 +23,27 @@
             tools:context=".navigationbar.ReportFragment">
 
             <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/please_insert_the_details"
-                android:textAlignment="center"
-                android:textColor="@color/dark_blue"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/guidelineRight"
-                app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-                app:layout_constraintTop_toTopOf="@id/guidelineH1" />
-
-            <EditText
-                android:id="@+id/description"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/round_text_box_dark"
-                android:elevation="5dp"
-                android:hint="@string/description"
-                android:inputType="textPersonName"
-                android:padding="10dip"
-                android:textColor="@color/white"
-                android:textColorHint="@color/transparent_white"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-                app:layout_constraintStart_toEndOf="@+id/guidelineLeft"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
-
-<!--            <Spinner-->
-<!--                android:id="@+id/spinner_events"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:background="@drawable/round_text_box_dark"-->
-<!--                android:elevation="5dp"-->
-<!--                android:padding="13dip"-->
-<!--                android:spinnerMode="dropdown"-->
-<!--                android:textSize="20sp"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/guidelineRight"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/guidelineLeft"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/description" />-->
-
-            <TextView
                 android:id="@+id/addressInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Your current location:"
+                android:layout_marginTop="40dp"
+                android:text="Report an event at your \ncurrent location:"
                 android:textColor="@color/dark_blue"
-                android:textSize="17sp"
+                android:textSize="20sp"
+                android:gravity="center"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelineLeft"
-                app:layout_constraintTop_toBottomOf="@+id/description" />
+                app:layout_constraintTop_toBottomOf="@+id/guidelineH1" />
 
             <TextView
                 android:id="@+id/addressTv"
                 android:layout_width="0dp"
+                android:layout_marginTop="15dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/dark_blue"
                 android:textSize="17sp"
+                android:gravity="center"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@+id/addressInfo" />
@@ -96,21 +53,14 @@
                 android:layout_width="135dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="60dp"
                 android:background="@drawable/round_btn_dark"
                 android:gravity="center"
-                android:text="Report event"
+                android:text="Submit"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addressTv" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reportBtn"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineLeft"
@@ -132,7 +82,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.30" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

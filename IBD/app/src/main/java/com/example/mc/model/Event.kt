@@ -14,8 +14,5 @@ data class Event (
     val location: String = "",
 
     @ColumnInfo(name = "data")
-    val data: String = "",
-
-    @ColumnInfo(name = "description")
-    var description: String = ""
+    val data: String = ""
 )
